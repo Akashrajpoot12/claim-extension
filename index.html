@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Zonov Claim Agent</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 820px;
+      margin: 48px auto;
+      padding: 0 24px 80px;
+      color: #1f2937;
+      line-height: 1.75;
+      background: #fff;
+    }
+    h1 { font-size: 28px; color: #111827; border-bottom: 2px solid #e5e7eb; padding-bottom: 14px; margin-bottom: 6px; }
+    .meta { color: #6b7280; font-size: 14px; margin-bottom: 36px; }
+    h2 { font-size: 18px; color: #111827; margin-top: 36px; margin-bottom: 10px; }
+    p { color: #374151; margin-bottom: 12px; }
+    ul { padding-left: 22px; margin-bottom: 12px; }
+    li { color: #374151; margin-bottom: 6px; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    th { background: #f3f4f6; text-align: left; padding: 10px 14px; border: 1px solid #e5e7eb; color: #111827; }
+    td { padding: 10px 14px; border: 1px solid #e5e7eb; color: #374151; vertical-align: top; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+    .badge-yes { background: #dcfce7; color: #166534; }
+    .badge-no  { background: #fee2e2; color: #991b1b; }
+    .highlight { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 12px 16px; border-radius: 4px; margin: 16px 0; }
+    a { color: #2563eb; }
+    footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid #e5e7eb; color: #9ca3af; font-size: 13px; }
+  </style>
+</head>
+<body>
+
+  <h1>Privacy Policy — Zonov Claim Agent</h1>
+  <p class="meta">Last Updated: May 8, 2026 &nbsp;|&nbsp; Version 1.0 &nbsp;|&nbsp; Applies to Chrome Extension v1.0.0+</p>
+
+  <p>
+    This Privacy Policy describes how <strong>Zonov AI</strong> ("we", "us") collects, uses, and protects
+    information through the <strong>Zonov Claim Agent</strong> Chrome Extension ("Extension").
+    By installing and using the Extension, you agree to the practices described in this policy.
+  </p>
+
+  <div class="highlight">
+    <strong>Who uses this Extension?</strong> This Extension is intended exclusively for
+    authorised hospital staff (claim executives, doctors, nursing staff) at empanelled hospitals.
+    It is not a public consumer product. All data processing is done on behalf of the hospital.
+  </div>
+
+  <!-- ─── 1. DATA COLLECTED ─── -->
+  <h2>1. Information We Collect</h2>
+  <p>The Extension collects only the minimum data required to perform its core functions:</p>
+
+  <table>
+    <tr>
+      <th>Data Type</th>
+      <th>What exactly</th>
+      <th>Where stored</th>
+      <th>Sent externally?</th>
+    </tr>
+    <tr>
+      <td><strong>Patient identifiers</strong></td>
+      <td>Visit ID, UHID, Aadhaar number, patient name, insurance scheme — read from the hospital portal page</td>
+      <td>Device only (chrome.storage.local)</td>
+      <td><span class="badge badge-no">No</span></td>
+    </tr>
+    <tr>
+      <td><strong>Medical documents</strong></td>
+      <td>PDF and image files uploaded by staff (Discharge Summary, OT Notes, Investigation Reports, etc.)</td>
+      <td>In-memory only during session; optionally synced to hospital's Zonov account</td>
+      <td><span class="badge badge-yes">Only to Zonov backend</span></td>
+    </tr>
+    <tr>
+      <td><strong>Document images (AI scan)</strong></td>
+      <td>Image data of uploaded documents sent for AI signature/stamp detection</td>
+      <td>Not stored — processed in real-time</td>
+      <td><span class="badge badge-yes">Sent to Groq API</span></td>
+    </tr>
+    <tr>
+      <td><strong>Staff profiles</strong></td>
+      <td>Doctor name, employee ID, category, phone, signature image, stamp image, photo</td>
+      <td>Device (chrome.storage.local) + Zonov backend (S3)</td>
+      <td><span class="badge badge-yes">Only to Zonov backend</span></td>
+    </tr>
+    <tr>
+      <td><strong>Hospital details</strong></td>
+      <td>Hospital name, registration number, address, phone, stamp image, logo</td>
+      <td>Device (chrome.storage.local) + Zonov backend (S3)</td>
+      <td><span class="badge badge-yes">Only to Zonov backend</span></td>
+    </tr>
+    <tr>
+      <td><strong>API credentials</strong></td>
+      <td>Auth token and license key for Zonov backend authentication</td>
+      <td>Device only (chrome.storage.local)</td>
+      <td><span class="badge badge-no">No</span></td>
+    </tr>
+    <tr>
+      <td><strong>Export history</strong></td>
+      <td>Date, filename, scheme name of exported claim PDFs</td>
+      <td>Device only (chrome.storage.local)</td>
+      <td><span class="badge badge-no">No</span></td>
+    </tr>
+    <tr>
+      <td><strong>Voice audio</strong></td>
+      <td>Microphone audio for voice navigation commands (hands-free use)</td>
+      <td>Not stored — processed in real-time only</td>
+      <td><span class="badge badge-yes">Sent to Deepgram API</span></td>
+    </tr>
+  </table>
+
+  <!-- ─── 2. NOT COLLECTED ─── -->
+  <h2>2. What We Do NOT Collect</h2>
+  <ul>
+    <li>Browsing history, URLs, or activity on any website other than the configured hospital portal</li>
+    <li>Passwords or login credentials of the hospital portal</li>
+    <li>Financial information such as credit/debit card numbers</li>
+    <li>Data from any page the Extension is not explicitly active on</li>
+    <li>Any data from children — this Extension is for healthcare professionals only</li>
+  </ul>
+
+  <!-- ─── 3. HOW USED ─── -->
+  <h2>3. How We Use the Data</h2>
+  <ul>
+    <li>Display the correct document checklist based on the patient's insurance scheme (RGHS, MAA, PM-JAY, MCSBY, ESIC, CGHS, etc.)</li>
+    <li>Verify documents for completeness — checking for doctor signature, stamp, and hospital stamp</li>
+    <li>Apply doctor signatures and stamps on claim documents</li>
+    <li>Generate and export complete claim PDF packages for hospital insurance submission</li>
+    <li>Sync staff profiles and hospital data across devices within the same hospital account</li>
+    <li>Show daily summary and dashboard statistics for the claim team</li>
+  </ul>
+
+  <!-- ─── 4. THIRD PARTY ─── -->
+  <h2>4. Third-Party Services Used</h2>
+
+  <table>
+    <tr>
+      <th>Service</th>
+      <th>Provider</th>
+      <th>Purpose</th>
+      <th>Data Sent</th>
+      <th>Their Privacy Policy</th>
+    </tr>
+    <tr>
+      <td><strong>Groq API</strong></td>
+      <td>Groq Inc.</td>
+      <td>AI-based document image analysis — detecting signatures and stamps</td>
+      <td>Document image (base64). No patient name, Aadhaar, or PII is included.</td>
+      <td><a href="https://groq.com/privacy-policy/" target="_blank" rel="noopener noreferrer">groq.com/privacy-policy</a></td>
+    </tr>
+    <tr>
+      <td><strong>Deepgram API</strong></td>
+      <td>Deepgram Inc.</td>
+      <td>Real-time voice-to-text for hands-free navigation</td>
+      <td>Microphone audio stream (real-time only, not stored)</td>
+      <td><a href="https://deepgram.com/privacy" target="_blank" rel="noopener noreferrer">deepgram.com/privacy</a></td>
+    </tr>
+    <tr>
+      <td><strong>Zonov Backend</strong></td>
+      <td>Zonov AI (apiprod.zonov.ai)</td>
+      <td>Store staff profiles, hospital data, and patient document metadata for the hospital account</td>
+      <td>Staff profiles, signatures, stamps, document URLs — per hospital account agreement</td>
+      <td>This policy</td>
+    </tr>
+  </table>
+
+  <p>We do not sell, rent, or trade any data to advertisers or unrelated third parties.</p>
+
+  <!-- ─── 5. PERMISSIONS ─── -->
+  <h2>5. Chrome Permissions Explained</h2>
+  <table>
+    <tr><th>Permission</th><th>Why we need it</th></tr>
+    <tr><td><code>storage</code></td><td>Save staff profiles, hospital details, settings, and export history locally on the device using chrome.storage.local</td></tr>
+    <tr><td><code>activeTab</code></td><td>Read patient data (UHID, name, scheme) from the currently open hospital portal tab</td></tr>
+    <tr><td><code>scripting</code></td><td>Inject the voice-bridge script into the hospital portal page for voice navigation support</td></tr>
+    <tr><td><code>tabs</code></td><td>Detect when the hospital portal tab is active to auto-refresh patient data</td></tr>
+  </table>
+
+  <!-- ─── 6. STORAGE ─── -->
+  <h2>6. Data Storage &amp; Retention</h2>
+  <ul>
+    <li><strong>Local storage</strong> (chrome.storage.local): Data persists on the device until the Extension is uninstalled or the user manually clears it from the Extension settings.</li>
+    <li><strong>Zonov backend (AWS S3 + database)</strong>: Staff and hospital data is retained per the service agreement with the hospital. Hospitals can request full data deletion at any time.</li>
+    <li><strong>Groq / Deepgram</strong>: We do not store any data on their servers. Groq and Deepgram process requests in real-time per their own retention policies.</li>
+  </ul>
+
+  <!-- ─── 7. SECURITY ─── -->
+  <h2>7. Security</h2>
+  <ul>
+    <li>All communication with Zonov backend and third-party APIs uses <strong>HTTPS encryption</strong></li>
+    <li>API credentials are stored in <code>chrome.storage.local</code> — not in JavaScript source code, cookies, or localStorage</li>
+    <li>Document images are processed as temporary in-memory data URLs and are not persisted beyond the session</li>
+    <li>The Extension only activates on the hospital portal domains configured in the manifest</li>
+  </ul>
+
+  <!-- ─── 8. RIGHTS ─── -->
+  <h2>8. Your Rights</h2>
+  <p>Authorised hospital staff and hospital administrators may:</p>
+  <ul>
+    <li>View, edit, or delete staff profiles directly from within the Extension</li>
+    <li>Clear all local data by uninstalling the Extension</li>
+    <li>Request complete data deletion from Zonov backend by contacting us at <a href="mailto:saurabh@zonov.ai">saurabh@zonov.ai</a></li>
+    <li>Request a copy of all data stored for their hospital account</li>
+  </ul>
+
+  <!-- ─── 9. CHANGES ─── -->
+  <h2>9. Changes to This Policy</h2>
+  <p>
+    We may update this policy to reflect changes in the Extension's functionality or applicable regulations.
+    The "Last Updated" date at the top will always reflect the most recent version.
+    Continued use of the Extension after changes constitutes acceptance of the updated policy.
+  </p>
+
+  <!-- ─── 10. CONTACT ─── -->
+  <h2>10. Contact Us</h2>
+  <p>For any privacy-related questions, data deletion requests, or concerns:</p>
+  <p>
+    <strong>Zonov AI</strong><br />
+    Email: <a href="mailto:saurabh@zonov.ai">saurabh@zonov.ai</a><br />
+    Website: <a href="https://zonov.ai" target="_blank" rel="noopener noreferrer">https://zonov.ai</a>
+  </p>
+
+  <footer>
+    &copy; 2026 Zonov AI. This privacy policy applies to the Zonov Claim Agent Chrome Extension only.
+  </footer>
+
+</body>
+</html>
